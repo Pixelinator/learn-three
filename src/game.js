@@ -1,5 +1,11 @@
+// Imports
 import * as THREE from 'three';
+import Preloader from './preloader';
 
+/**
+ * class Game
+ * 
+ */
 class Game {
     constructor() {
         this.scene =  new THREE.Scene();
@@ -9,20 +15,9 @@ class Game {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(this.renderer.domElement);
 
-        const geometry = new THREE.BoxGeometry(1,1,1);
-        const light = new THREE.DirectionalLight(0xffffff);
-        light.position.set(0,20,0);
-        const ambient = new THREE.AmbientLight(0x707070);
-
-        const material = new THREE.MeshPhongMaterial({color:0x00aaff});
-
-        this.cube = new THREE.Mesh(geometry, material);
-
-        this.scene.add(this.cube);
-        this.scene.add(light);
-        this.scene.add(ambient);
-
-        this.camera.position.z = 3;
+        window.onError = function(error) {
+            console.error(JSON.stringify(error));
+        }
 
         this.animate();
     }
@@ -30,9 +25,6 @@ class Game {
     animate() {
         const game = this;
         requestAnimationFrame( function() { game.animate(); });
-
-        this.cube.rotation.x += 0.01;
-        this.cube.rotation.y += 0.01;
 
         this.renderer.render(this.scene, this.camera);
     }

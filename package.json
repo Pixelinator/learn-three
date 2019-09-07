@@ -6,17 +6,19 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "webpack --mode=development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode=production",
+    "test": "SET TESTING=true && webpack --mode=development && mocha test-dist/bundle.js && rm -rf test-dist"
   },
   "keywords": [],
   "author": "Dominic Forster",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.2.0",
     "css-loader": "^3.2.0",
     "csv-loader": "^3.0.2",
     "file-loader": "^4.2.0",
     "imports-loader": "^0.8.0",
+    "mocha": "^6.2.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
