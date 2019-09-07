@@ -6,15 +6,19 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "webpack --mode=production",
-    "test": "SET TESTING=true && webpack --mode=development &&  && rm -rf test-dist"
+    "watch": "webpack --watch",
+    "build": "webpack",
+    "test": "SET TESTING=true && jest --passWithNoTests"
   },
   "keywords": [],
   "author": "Dominic Forster",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^24.9.0",
+    "jest-cli": "^24.9.0",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
     "dat.gui": "^0.7.6",
@@ -22,5 +26,9 @@
     "stats.js": "^0.17.0",
     "three": "^0.108.0",
     "three-orbitcontrols": "^2.102.2"
+  },
+  "jest": {
+    "verbose": true,
+    "moduleDirectories": ["node_modules", "src"]
   }
 }
